@@ -1,0 +1,96 @@
+FUNCTION read_tab(n:INTEGER) : Tab : ARRAY_OF INTEGER [50]
+VAR
+    i:INTEGER;
+BEGIN
+    WHILE (n>0) DO
+        Read(n)
+    END_WHILE
+    RETURN value ;
+END
+
+PROCEDURE dot_product(v1,v2: ARRAY_OF INTEGER [50]; ps:INTEGER)
+VAR
+    n,m:INTEGER;
+BEGIN
+    v1=read_tab(n)
+    v2=read_tab(m)
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            ps=(v1*v2)+ps
+        END_FOR
+        Write(ps)
+    END_FOR
+END
+
+ALGORITHM Orthogonal
+VAR
+    Tab : ARRAY_OF INTEGER [50];
+    k,l: INTEGER
+    ps:INTEGER
+BEGIN
+    WHILE (n>0) DO
+        Read(n)
+    END_WHILE
+    FOR k FROM 0 TO 2*n STEP 1  DO
+        Tab[k]=read_tab(l)
+    END_FOR
+    FOR k FROM 0 TO Tab.length STEP 2  DO
+        dot_product(Tab[k],Tab[k+1],ps)
+        IF (ps==0) THEN
+            Write("Two vectors ortogonal")
+        ELSE
+            Write("is not orthogonal")
+        END_IF
+    END_FOR
+END
+
+
+/*dot_product function*/
+
+
+FUNCTION read_tab(n:INTEGER) : Tab : ARRAY_OF INTEGER [50]
+VAR
+    i:INTEGER;
+BEGIN
+    WHILE (n>0) DO
+        Read(n)
+    END_WHILE
+    RETURN value ;
+END
+
+FUNCTION dot_product(v1,v2: ARRAY_OF INTEGER [50]; ps:INTEGER)
+VAR
+    n,m:INTEGER;
+BEGIN
+    v1=read_tab(n)
+    v2=read_tab(m)
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM 0 TO m-1 STEP 1  DO
+            ps=(v1*v2)+ps
+        END_FOR
+        RETURN ps
+    END_FOR
+END
+
+ALGORITHM Orthogonal
+VAR
+    Tab : ARRAY_OF INTEGER [50];
+    k,l: INTEGER
+    ps:INTEGER
+BEGIN
+    WHILE (n>0) DO
+        Read(n)
+    END_WHILE
+    FOR k FROM 0 TO 2*n STEP 1  DO
+        Tab[k]=read_tab(l)
+    END_FOR
+    FOR k FROM 0 TO Tab.length STEP 2  DO
+
+        IF ( dot_product(Tab[k],Tab[k+1],ps)) THEN
+            Write("Two vectors ortogonal")
+        ELSE
+            Write("is not orthogonal")
+        END_IF
+
+    END_FOR
+END
